@@ -5,6 +5,15 @@ const {Country}= require("../db");
 
 const getCountries = async () =>{
     const countries = await Country.findAll(
+        
+        {
+        attributes: ["name", "capital", "id", "flag"],
+            through: {
+                attributes: [],
+            }
+        })
+
+    
     //     {
     //     include:{
     //         model: Activity,
@@ -14,7 +23,7 @@ const getCountries = async () =>{
     //         }
     //     }
     // }
-    );
+    
     return countries;
 }
 

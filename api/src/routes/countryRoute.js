@@ -4,6 +4,7 @@ const { Router } = require("express");
 const getCountriesByApi = require("../controllers/getCountryByApi");
 const getCountries = require("../controllers/getCountries");
 const getCountryByName = require("../controllers/getCountryByName");
+const getCountryDetail = require("../controllers/getCountryDetail");
 
 const countryRoutes = Router();
 
@@ -23,6 +24,10 @@ countryRoutes.get("/", async (_req, res) => {
   }
 });
 
+
+//************************* Buscador de paises por nombre, si no mando query me los devuelve a todos******
+
+
 countryRoutes.get("/countries", async (req, res) => {
   try {
     const { name } = req.query;
@@ -37,5 +42,32 @@ countryRoutes.get("/countries", async (req, res) => {
     return res.status(404).json({ error: error.message });
   }
 });
+
+
+
+//  *************************Buscador de país con detail ********************************************
+const validate= (req, res, next) =>{
+    const {id} = req.params;
+    if(id.length !==3)return res.status(404).send("Deben ser solo 3 letras.");
+    next();
+};
+
+countryRoutes.get("/countries/:id", validate,  async (req, res )=> {
+    try {
+        const {id} = req.params;
+        const country = await getCountryDetail(id);
+        res.status(200).json(country);
+    } catch (error) {
+        res.status(404).json({error: error.message});
+    }
+});
+
+
+
+
+
+
+
+
 
 module.exports = countryRoutes;
