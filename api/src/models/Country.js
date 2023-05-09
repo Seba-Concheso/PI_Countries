@@ -13,25 +13,21 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    image: {
-      type: DataTypes.BLOB,
+    flag: {
+      type: DataTypes.STRING,
       allowNull: false,
+    },
+    maps: {
+      type: DataTypes.STRING,
     },
     continent: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
     },
     capital: {
       type: DataTypes.STRING,
-      allowNull: false,
-    },
-    languages: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    currencies: {
-      type: DataTypes.STRING,
-      allowNull: false,
+      // type: DataTypes.ARRAY(DataTypes.STRING),
+      // allowNull: false,
     },
     subregion: {
       type: DataTypes.STRING,
@@ -40,8 +36,9 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
     },
     population: {
-      type: DataTypes.BIGINT,
-      allowNull: false,
+      type: DataTypes.INTEGER,
+      allowNull: false
+      
     },},
     {timestamps: false}
     );
