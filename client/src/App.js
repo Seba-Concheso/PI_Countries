@@ -1,9 +1,20 @@
 import './App.css';
+import { Routes, Route} from "react-router-dom";
+import Landing from './components/Landing/Landing';
+import Home from './components/Home/Home';
+import Form from './components/Form/Form';
+import Detail from './components/Detail/Detail';
 
-function App() {
+
+const App = () => {
   return (
     <div className="App">
-      <h1>Henry Countries</h1>
+      <Routes>
+        <Route path ="/" element={<Landing/>}/>
+        <Route path ="/home" element={<Home/>}/>
+        <Route path = "/form" element={<Form/>}/>
+        <Route path = "/countries/:id" element={<Detail/>}/>
+      </Routes>
     </div>
   );
 }

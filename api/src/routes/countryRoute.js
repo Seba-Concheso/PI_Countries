@@ -17,9 +17,11 @@ countryRoutes.get("/", async (_req, res) => {
 
   try {
     const paises = await getCountriesByApi();
+    // console.log(paises);
 
     res.status(200).json(paises);
   } catch (error) {
+    console.log(error);
     res.status(500).json({ error: "error al obtener datos." });
   }
 });

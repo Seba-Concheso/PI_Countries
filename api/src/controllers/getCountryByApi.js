@@ -4,6 +4,7 @@ const axios = require("axios");
 const getCountriesByApi = async () => {
   const response = await axios.get("https://restcountries.com/v3.1/all");
 
+
   const arrayCountries = await response.data.map((country) => {
     return {
       id: country.cca3,
@@ -19,7 +20,7 @@ const getCountriesByApi = async () => {
   });
 
   return await Country.bulkCreate(arrayCountries);
-  // return arrayCountries;
+  
 };
 
 module.exports = getCountriesByApi;
