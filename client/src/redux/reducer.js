@@ -1,4 +1,4 @@
-import { GET_COUNTRIES, GET_COUNTRY_DETAIL } from "./action.types";
+import { GET_COUNTRIES, GET_COUNTRY_DETAIL, GET_COUNTRIES_API } from "./action.types";
 
 const initialState = {
   country: [],
@@ -7,6 +7,11 @@ const initialState = {
 
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
+    case GET_COUNTRIES_API:
+      return {
+        ...state,
+        country: payload,
+      };
     case GET_COUNTRIES:
       return {
         ...state,
