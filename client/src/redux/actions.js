@@ -1,14 +1,7 @@
-import { GET_COUNTRIES, GET_COUNTRY_DETAIL, GET_COUNTRIES_API } from "./action.types";
+import { GET_COUNTRIES, GET_COUNTRY_DETAIL, PREVIUS_PAGE, NEXT_PAGE } from "./action.types";
 import axios from "axios";
 
-export const getCountriesApi = () => {
-  // const endpoint = "http://localhost:3001/countries";
-  return async function (dispatch) {
-    const response = await axios.get("https://restcountries.com/v3.1/all");
 
-    return dispatch({ type: GET_COUNTRIES_API, payload: response.data });
-  };
-};
 export const getCountriesFront = () => {
   // const endpoint = "http://localhost:3001/countries";
   return async function (dispatch) {
@@ -26,3 +19,17 @@ export const getDetail = (id) => {
     return dispatch({ type: GET_COUNTRY_DETAIL, payload: response.data });
   };
 };
+
+export const previusPage = () => {
+  return {
+    type: PREVIUS_PAGE,
+    payload: previusPage,
+  }
+}
+
+export const nextPage = () => {
+  return {
+    type: NEXT_PAGE,
+    payload: nextPage,
+  }
+}

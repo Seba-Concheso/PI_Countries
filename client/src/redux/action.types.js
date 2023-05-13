@@ -1,3 +1,5 @@
 export const GET_COUNTRIES = "GET_COUNTRIES";
-export const GET_COUNTRIES_API = "GET_COUNTRIES_API";
 export const GET_COUNTRY_DETAIL = "GET_COUNTRY_DETAIL";
+export const CURRENT_PAGE = "CURRENT_PAGE";
+export const PREVIUS_PAGE = "PREVIUS_PAGE";
+export const NEXT_PAGE = "NEXT_PAGE";

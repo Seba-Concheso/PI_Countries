@@ -7,10 +7,10 @@ import { Link } from "react-router-dom";
 
 const Detail = () => {
   const { id } = useParams();
-  console.log(id+ "  id");
+  
   const dispatch = useDispatch();
   const countryDetail = useSelector((state) => state.countryDetail);
-  console.log(countryDetail);
+  
 
   useEffect(() => {
     dispatch(getDetail(id));

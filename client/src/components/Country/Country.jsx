@@ -7,7 +7,9 @@ const Country = ({ id, name, flag, continent, activity }) => {
       <Link to={`/countries/${id}`}>
         <h2>{name}</h2>
       </Link>
+      
       <img src={flag} alt={name} />
+      
       <h3>{continent}</h3>
       <h4>{activity}</h4>
     </div>

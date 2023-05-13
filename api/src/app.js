@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const cors =require("cors");
 const countryRoutes = require('./routes/countryRoute.js');
 const activityRouter = require("./routes/activitiesRoute.js");
+const getCountriesByApi = require('./controllers/getCountryByApi.js');
 
 require('./db.js');
 
@@ -26,7 +27,7 @@ server.use((req, res, next) => {
 });
 
 server.use('/', countryRoutes, activityRouter);
-
+getCountriesByApi();
 // Error catching endware.
 server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   const status = err.status || 500;

@@ -3,7 +3,7 @@ const axios = require("axios");
 
 const getCountriesByApi = async () => {
   const response = await axios.get("https://restcountries.com/v3.1/all");
-
+  console.log("axios del back  "+ response);
 
   const arrayCountries = await response.data.map((country) => {
     return {
