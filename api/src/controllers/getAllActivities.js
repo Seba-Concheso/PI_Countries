@@ -10,15 +10,16 @@ const getAllActivities = async () =>{
         attributes: ["name", "difficulty", "duration", "season", "description"],
             through: {
                 attributes: [],
-            }
-        },
-        {
+            },
+        
+        
         include:{
             model: Country,
             attributes: ["name"],    //Con el include trato de colocar solo el nobre de la actividad en los paises
             through: {
                 attributes: [],
             }
+        
         }
     })
     

@@ -1,9 +1,17 @@
-import { GET_COUNTRIES, GET_COUNTRY_DETAIL, NEXT_PAGE, PREVIUS_PAGE } from "./action.types";
+import {
+  GET_COUNTRIES,
+  GET_COUNTRY_DETAIL,
+  NEXT_PAGE,
+  PREVIUS_PAGE,
+  GET_ACTIVITIES,
+  CREATE_ACTIVITIES,
+} from "./action.types";
 
 const initialState = {
   country: [],
   countryDetail: {},
   currentPage: 1,
+  activities: [],
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -21,14 +29,23 @@ const reducer = (state = initialState, { type, payload }) => {
     case NEXT_PAGE:
       return {
         ...state,
-        currentPage: state.currentPage +1
+        currentPage: state.currentPage + 1,
       };
     case PREVIUS_PAGE:
       return {
         ...state,
-        currentPage: state.currentPage -1
+        currentPage: state.currentPage - 1,
       };
-  
+    case CREATE_ACTIVITIES:
+      return {
+        ...state,
+        activities: payload,
+      };
+    case GET_ACTIVITIES:
+      return {
+        ...state,
+        activities: payload,
+      };
 
     default:
       return { ...state };

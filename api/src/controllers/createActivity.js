@@ -1,6 +1,7 @@
 const { Activity} = require("../db");
 
 const createActivity = async (
+
   name,
   difficulty,
   duration,

@@ -4,6 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCountriesFront } from "../../redux/actions";
 import Country from "../Country/Country";
 import Pagination from "../Pagination/Pagination";
+import Style from "./Home.module.css";
+
+
+
 
 
 
@@ -11,6 +15,7 @@ import Pagination from "../Pagination/Pagination";
 
 const Home = () => {
   const dispatch = useDispatch();
+  
   const {country, currentPage} = useSelector((state) => state);
   const countries= country;
   useEffect(() => {
@@ -24,14 +29,11 @@ const Home = () => {
 
   return (
     <div>
- 
+   
           <button>
             <NavLink to="/form">Agregar actividad</NavLink>
-          </button>
-          <Pagination>
-
-          </Pagination>
-      <div className="country">
+           </button>
+      <div className={Style.country}>
       {countries.slice((currentPage -1)*10, currentPage *10).map(({ id, name, flag, continent, activities }) => {
         return (
           <Country
@@ -40,11 +42,12 @@ const Home = () => {
           name={name}
           flag={flag}
           continent={continent}
-          activities={activities}
+          
           />
           );
         })}
       </div>
+      <Pagination></Pagination>
     </div>
   );
 };

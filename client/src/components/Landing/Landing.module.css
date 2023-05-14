@@ -1,0 +1,29 @@
+.div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url("../../assets/Landing_Page.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.div h1 {
+    font-size: 5rem;
+    color: #000000;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.button {
+    background-color: #d6bca0;
+    color: #f7eeee;
+    border: none;
+    border-radius: 5px;
+    margin-top: 15px;
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
