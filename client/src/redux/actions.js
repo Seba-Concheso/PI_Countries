@@ -5,6 +5,7 @@ import {
   NEXT_PAGE,
   GET_ACTIVITIES,
   CREATE_ACTIVITIES,
+  SEARCH_COUNTRY,
 } from "./action.types";
 import axios from "axios";
 
@@ -52,5 +53,20 @@ export const getActivities = () => {
     console.log(response);
 
     return dispatch({ type: GET_ACTIVITIES, payload: response.data });
+  };
+};
+
+export const searchCountry = (country) => {
+  const name = country;
+  return async function (dispatch) {
+    try {
+      const response = await axios(
+        `http://localhost:3001/countries?name=${name}`
+      );
+      console.log(response.data);
+      return dispatch({ type: SEARCH_COUNTRY, payload: response.data });
+    } catch (error) {
+      window.alert("Pais no encontrado");
+    }
   };
 };

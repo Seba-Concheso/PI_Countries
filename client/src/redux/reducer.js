@@ -5,6 +5,7 @@ import {
   PREVIUS_PAGE,
   GET_ACTIVITIES,
   CREATE_ACTIVITIES,
+  SEARCH_COUNTRY,
 } from "./action.types";
 
 const initialState = {
@@ -46,7 +47,11 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         activities: payload,
       };
-
+    case SEARCH_COUNTRY:
+      return {
+        ...state,
+        country: payload,
+      };
     default:
       return { ...state };
   }

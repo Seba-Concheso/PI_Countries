@@ -1,17 +1,28 @@
-import { Link } from "react-router-dom";
-import Style from "./NavBar.module.css";
+import { Link, useNavigate } from "react-router-dom";
 
+import Style from "./NavBar.module.css";
+import SearchBar from "../SearchBar/SearchBar";
+import { getCountriesFront, searchCountry } from "../../redux/actions";
 
 const NavBar = () => {
-    return (
+  const navigate = useNavigate();
+  const handleClick = () => {
+    getCountriesFront();
+    navigate("/home", { replace: true });
+    window.location.reload();
+  };
+
+  return (
     <nav>
-        <div className={Style.navbar}>
-            <Link to="/home">Home</Link>
-            
-        
-        </div>
+      <div className={Style.navbar}>
+        <Link to="/home">
+          <button onClick={handleClick}>Home</button>
+        </Link>
+        <Link to="/about">About</Link>
+        <SearchBar onSearch={searchCountry} />
+      </div>
     </nav>
-    );
+  );
 };
 
 export default NavBar;

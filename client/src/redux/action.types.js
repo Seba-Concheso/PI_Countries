@@ -5,3 +5,4 @@ export const PREVIUS_PAGE = "PREVIUS_PAGE";
 export const NEXT_PAGE = "NEXT_PAGE";
 export const GET_ACTIVITIES = "GET_ACTIVITIES";
 export const CREATE_ACTIVITIES = "CREATE_ACTIVITIES";
+export const SEARCH_COUNTRY = "SEARCH_COUNTRY";
