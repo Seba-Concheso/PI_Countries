@@ -7,7 +7,7 @@ const getCountries = async () =>{
     const countries = await Country.findAll(
         
         {
-        attributes: ["name", "continent", "id", "flag"],
+        attributes: ["name", "continent", "id", "flag", "population"],
             through: {
                 attributes: [],
                     },

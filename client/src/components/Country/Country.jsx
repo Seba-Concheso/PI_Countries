@@ -1,17 +1,18 @@
 import { Link } from "react-router-dom";
 import Style from "./Country.module.css";
 
-const Country = ({ id, name, flag, continent}) => {
+const Country = (country, Activity) => {
   return (
     <div className={Style.country}>
-      <Link to={`/countries/${id}`}>
-        <h2>{name}</h2>
+      <Link to={`/countries/${country.id}`}>
+        <h2>{country.name}</h2>
       </Link>
-      <img className={Style.image} src={flag} alt={name} />
+      <img className={Style.image} src={country.flag} alt={country.name} />
       
-      <h3>{continent}</h3>
+      <h3>{country.continent}</h3>
+      <h4>{Activity.name}</h4>
       
-      <h2>{id}</h2>
+      <h2>{country.id}</h2>
     </div>
   );
 };

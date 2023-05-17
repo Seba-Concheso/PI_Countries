@@ -8,7 +8,7 @@ const SearchBar = () => {
   const [countrysearch, setCountrysearch] = useState("");
 
   const handleChange = (event) => {
-    console.log(event.target.value);
+    
     setCountrysearch(event.target.value);
   };
   const handleSubmit = (event) => {
@@ -26,6 +26,7 @@ const SearchBar = () => {
           value={countrysearch}
           onChange={handleChange}
         />
+        <Link to="/home">
         <button
           onClick={() => {
             handleSubmit();
@@ -34,6 +35,7 @@ const SearchBar = () => {
         >
           Buscar
         </button>
+        </Link>
       </div>
     </div>
   );

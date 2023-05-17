@@ -27,7 +27,7 @@ server.use((req, res, next) => {
 });
 
 server.use('/', countryRoutes, activityRouter);
-// getCountriesByApi();
+// getCountriesByApi();      // Solo habilitar si nos encontramos en force:true
 // Error catching endware.
 server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   const status = err.status || 500;
