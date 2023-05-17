@@ -19,7 +19,7 @@ const NavBar = () => {
           <button onClick={handleClick}>Home</button>
         </Link>
         <Link to="/about">About</Link>
-        <SearchBar onSearch={searchCountry} />
+        <SearchBar onSearch={SearchBar} />
       </div>
     </nav>
   );

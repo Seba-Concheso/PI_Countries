@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchCountry } from "../../redux/actions";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SearchBar = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [countrysearch, setCountrysearch] = useState("");
 
@@ -14,7 +15,9 @@ const SearchBar = () => {
   const handleSubmit = (event) => {
     
     dispatch(searchCountry(countrysearch));
+    navigate(`/home/${countrysearch}`);
   };
+
 
   return (
     <div>
@@ -26,7 +29,7 @@ const SearchBar = () => {
           value={countrysearch}
           onChange={handleChange}
         />
-        <Link to="/home">
+        
         <button
           onClick={() => {
             handleSubmit();
@@ -35,7 +38,7 @@ const SearchBar = () => {
         >
           Buscar
         </button>
-        </Link>
+        
       </div>
     </div>
   );

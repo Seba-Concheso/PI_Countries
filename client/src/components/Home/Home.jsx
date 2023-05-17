@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { filterContinent, getCountriesFront, orderByPopulation, orderByName} from "../../redux/actions";
@@ -9,6 +9,7 @@ import Style from "./Home.module.css";
 
 const Home = () => {
   const dispatch = useDispatch();
+  const { name } = useParams();
 
   const { country, currentPage, countryFiltered } = useSelector(
     (state) => state
@@ -17,7 +18,7 @@ const Home = () => {
   const countries = country;
 
   useEffect(() => {
-    dispatch(getCountriesFront());
+    if(!name) dispatch(getCountriesFront());
   }, []);
   const handleFilter = (event) => {
     dispatch(filterContinent(event.target.value));
@@ -35,7 +36,13 @@ const Home = () => {
 
   if (countryFiltered.length > 0) {
     filteredCountries = countryFiltered;
+  }else
+  if (name) {
+    filteredCountries = countries.filter((country) => {
+      return country.name.toLowerCase().includes(name.toLowerCase());
+    });
   }
+
 
   return (
     <div>

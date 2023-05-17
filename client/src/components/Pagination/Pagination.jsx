@@ -14,7 +14,7 @@ const Pagination = () => {
         Prev:
       </button>
       <p>
-        Página: {currentPage}/{Math.ceil(country.length / 10)}
+        Página: { currentPage}/{Math.ceil(country.length / 10)}
       </p>
       <button
         disabled={currentPage === Math.ceil(country.length / 10)}
