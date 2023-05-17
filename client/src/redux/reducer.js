@@ -48,7 +48,7 @@ const reducer = (state = initialState, { type, payload }) => {
     case CREATE_ACTIVITIES:
       return {
         ...state,
-        activities: payload,
+        // activities: payload,  //está así porque sino me da error el maps de activities
       };
     case GET_ACTIVITIES:
       return {
@@ -62,44 +62,38 @@ const reducer = (state = initialState, { type, payload }) => {
       };
     case FILTER_CONTINENT:
       const countryFiltered = state.country.filter(
-        (continent) => continent.continent === payload);
-        
+        (continent) => continent.continent === payload
+      );
+
       return {
         ...state,
         countryFiltered: countryFiltered,
         currentPage: 1,
       };
     case ORDER_BY_POPULATION:
-      const sortedCountry = payload === "ASC" ? state.country.sort((a, b) => a.population - b.population)
-                                              : state.country.sort((a, b) => b.population - a.population);
-      console.log(sortedCountry);
+      const sortedCountry =
+        payload === "ASC"
+          ? state.country.sort((a, b) => a.population - b.population)
+          : state.country.sort((a, b) => b.population - a.population);
       return {
         ...state,
-       country: sortedCountry,
-       currentPage: 1,
+        country: sortedCountry,
+        currentPage: 1,
       };
     case ORDER_BY_NAME:
-      const sortedCountryName = payload === "ASC" ? state.country.sort((a, b) => a.name.localeCompare(b.name))
-                                                  : state.country.sort((a, b) => b.name.localeCompare(a.name));
-      console.log(sortedCountryName);
+      const sortedCountryName =
+        payload === "ASC"
+          ? state.country.sort((a, b) => a.name.localeCompare(b.name))
+          : state.country.sort((a, b) => b.name.localeCompare(a.name));
       return {
         ...state,
         country: sortedCountryName,
         currentPage: 1,
       };
-    // case FILTER_BY_ACTIVITY:
-    //   const activityFiltered = state.activities.filter((activity) => activity.activities === payload);
-    //   console.log(activityFiltered + "  REDUCER");
-    //   return {
-    //     ...state,
-    //     countryFiltered: activityFiltered,
-        
-    //   };
     case GET_ACTIVITIES_BY_NAME:
       return {
         ...state,
         activitiesFiltered: payload,
-        
       };
     default:
       return { ...state };

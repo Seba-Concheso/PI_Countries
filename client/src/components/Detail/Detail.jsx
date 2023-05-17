@@ -25,9 +25,9 @@ const Detail = () => {
       <h4>Población: {countryDetail.population}</h4>
       <h4>
         Actividades:{" "}
-        {countryDetail.activities?.map((act) => {
+        {countryDetail.activities?.map((act, index) => {
           return (
-            <div>
+            <div key={index}>
               <h4>Nombre: {act.name}</h4>
               <h4>Dificultad: {act.difficulty}</h4>
               <h4>Duración: {act.duration} horas.</h4>
