@@ -11,6 +11,7 @@ import {
   ORDER_BY_NAME,
   FILTER_BY_ACTIVITY,
   GET_ACTIVITIES_BY_NAME,
+  GET_COUNTRIES_BY_API,
 } from "./action.types";
 
 const initialState = {
@@ -24,6 +25,12 @@ const initialState = {
 
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
+    case GET_COUNTRIES_BY_API:
+      return {
+        ...state,
+        country: payload,
+        currentPage: 1,
+      };
     case GET_COUNTRIES:
       return {
         ...state,

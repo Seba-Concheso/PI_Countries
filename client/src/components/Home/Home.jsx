@@ -7,6 +7,7 @@ import Country from "../Country/Country";
 import Pagination from "../Pagination/Pagination";
 import Style from "./Home.module.css";
 
+
 const Home = () => {
   const dispatch = useDispatch();
   const { name } = useParams();
@@ -45,57 +46,66 @@ const Home = () => {
 
 
   return (
-    <div>
-      <button>
-        <NavLink to="/form">Agregar actividad</NavLink>
-      </button>
-      <div>
+    <div className={Style.home}>
+      <div className={Style.filtrados}>
+        <div className={Style.divfiltrados}>
         <span>  Filtrar por continente  </span>
-          <select onChange={handleFilter}>
-            <option value="All">All</option>
-            <option value="Africa">Africa</option>
+          <select className={Style.select} onChange={handleFilter}>
+            <option className={Style.select}value="All">All</option>
+            <option className={Style.select} value="Africa">Africa</option>
             <option value="Americas">Americas</option>
             <option value="Asia">Asia</option>
             <option value="Europe">Europe</option>
             <option value="Oceania">Oceanía</option>
             <option value="Antartic">Antartic</option>
           </select>
+        </div>
+        <div className={Style.divfiltrados}>
         <span>  Ordenar por población  </span>
-          <select onChange={handleOrderByPopulation}>
+          <select className={Style.select} onChange={handleOrderByPopulation}>
             <option value="ASC">Ascendente</option>
             <option value="DESC">Descendente</option>
           </select>
+        </div>
+        <div className={Style.divfiltrados}>
         <span>  Ordenar por nombre  </span>
-          <select onChange={handleOrderByName} >
+          <select className={Style.select} onChange={handleOrderByName} >
             <option value="ASC">Ascendente</option>
             <option value="DESC">Descendente</option>
           </select>
+        </div>
+        <div className={Style.actividades}>
         <span>
            <NavLink to= "/activities">
-           <button >Actividad turística</button>
+           <button className={Style.buttonActivity} >Actividad turística</button>
             </NavLink>
         </span>
-              
+        <NavLink to="/form">
+      <button className={Style.buttonActivity}>Agregar actividad</button>
+        </NavLink>
+        </div> 
       </div>
-
+      <div className={Style.pagination}>
+      </div>
       <div className={Style.country}>
         {filteredCountries
           .slice((currentPage - 1) * 10, currentPage * 10)
           .map(({ id, name, flag, continent, activities }) => {
             return (
               <Country
-                key={id}
-                id={id}
-                name={name}
-                flag={flag}
-                continent={continent}
-                activities={activities}
-                
+              key={id}
+              id={id}
+              name={name}
+              flag={flag}
+              continent={continent}
+              activities={activities}
+              
               />
-            );
-          })}
-      </div>
-      <Pagination></Pagination>
+              );
+            })}
+      </div >
+            <Pagination ></Pagination>
+      
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import {
   GET_COUNTRIES,
+  GET_COUNTRIES_BY_API,
   GET_COUNTRY_DETAIL,
   PREVIUS_PAGE,
   NEXT_PAGE,
@@ -14,6 +15,14 @@ import {
 } from "./action.types";
 import axios from "axios";
 
+export const getCountriesByApi = () => {
+  // const endpoint = "http://localhost:3001/countries";
+  return async function (dispatch) {
+    const response = await axios.get("http://localhost:3001/");
+
+    return dispatch({ type: GET_COUNTRIES_BY_API, payload: response.data });
+  };
+};
 export const getCountriesFront = () => {
   // const endpoint = "http://localhost:3001/countries";
   return async function (dispatch) {

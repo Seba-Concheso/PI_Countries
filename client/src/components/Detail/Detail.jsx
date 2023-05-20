@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getDetail } from "../../redux/actions";
 import { Link } from "react-router-dom";
+import Style from "./Detail.module.css";
 
 const Detail = () => {
   const { id } = useParams();
@@ -15,35 +16,46 @@ const Detail = () => {
   }, [id]);
 
   return (
-    <div>
-      <h1>{countryDetail.name}</h1>
-      <img src={countryDetail.flag} alt={countryDetail.name} />
-      <h2>Capital: {countryDetail.capital}</h2>
-      <h4>Continente: {countryDetail.continent}</h4>
-      <h4>Subregión: {countryDetail.subregion}</h4>
-      <h4>Área: {countryDetail.area} m²</h4>
-      <h4>Población: {countryDetail.population}</h4>
-      <h4>
-        Actividades:{" "}
-        {countryDetail.activities?.map((act, index) => {
-          return (
-            <div key={index}>
-              <h4>Nombre: {act.name}</h4>
-              <h4>Dificultad: {act.difficulty}</h4>
-              <h4>Duración: {act.duration} horas.</h4>
-              <h4>Temporada: {act.season}</h4>
-              <h4>Descripción: {act.description}</h4>
-            </div>
-          );
-        })}
-      </h4>
-      <Link to={countryDetail.maps}>
-        <h4>Mapa</h4>
+    <div className={Style.body}>
+      <div className={Style.conteiner}>
+     
+        <h1 className={Style.name}>{countryDetail.name}</h1>
+        <img
+          className={Style.flag}
+          src={countryDetail.flag}
+          alt={countryDetail.name}
+        />
+        <div className={Style.divInfo} >
+        <h3 className={Style.info}>Capital: {countryDetail.capital}</h3>
+        <h4 className={Style.info}>Continente: {countryDetail.continent}</h4>
+        <h4 className={Style.info}>Subregión: {countryDetail.subregion}</h4>
+        <h4 className={Style.info}>Área: {countryDetail.area} m²</h4>
+        <h4 className={Style.info}>Población: {countryDetail.population}</h4>
+        </div>
+        <div className={Style.activities}>
+          <h4 className={Style.activitiestitle}>
+            Actividades:{" "}
+            {countryDetail.activities?.map((act, index) => {
+              return (
+                <li key={index} className={Style.activityitem}>
+                  <h4 className={Style.activityname}>Nombre: {act.name}</h4>
+                  <p className={Style.activitydetails}>
+                    <h4>Dificultad: {act.difficulty}</h4>
+                    <h4>Duración: {act.duration} horas.</h4>
+                    <h4>Temporada: {act.season}</h4>
+                    <h4>Descripción: {act.description}</h4>
+                  </p>
+                </li>
+              );
+            })}
+          </h4>
+          <Link to={countryDetail.maps}>
+            <h4 className={Style.mapa}>Mapa</h4>
+          </Link>
+        </div>
+      <Link to="/home">
+        <button className={Style.button}>Volver</button>
       </Link>
-      <div>
-        <Link to="/home">
-          <button>Volver</button>
-        </Link>
       </div>
     </div>
   );

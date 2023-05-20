@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchCountry } from "../../redux/actions";
 import { Link, useNavigate } from "react-router-dom";
+import Style from "./SearchBar.module.css";
 
 const SearchBar = () => {
   const navigate = useNavigate();
@@ -20,17 +21,18 @@ const SearchBar = () => {
 
 
   return (
-    <div>
-      <div>
-        <label htmlFor="country">País</label>
+    <div className={Style.div}>
+      
+        
         <input
           type="text"
-          name="country"
+          placeholder="Buscador de país"
+          className={Style.label}
           value={countrysearch}
           onChange={handleChange}
         />
         
-        <button
+        <button className={Style.button}
           onClick={() => {
             handleSubmit();
             setCountrysearch("");
@@ -39,7 +41,7 @@ const SearchBar = () => {
           Buscar
         </button>
         
-      </div>
+      
     </div>
   );
 };

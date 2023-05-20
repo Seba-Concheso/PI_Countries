@@ -1,30 +1,57 @@
 .country{
-    border: 2px solid black;
-    border-radius: 10px;
-    margin: 2px;
-    background-color: rgb(184, 179, 179);
-    width: 250px;
-    height: 390px;
-    justify-content:space-between;
-    padding: 30px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    /* border: 2px solid black; */
+    /* border-radius: 10px; */
+    background-color: transparent;
+    width: 300px;
+    height: 250px;
+    /* justify-content:space-between; */
+    /* padding: 30px; */
+    /* padding-top: 5px;
+    padding-bottom: 5px;*/
     margin-left: 60px;
-    margin-right: 60px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-right: 40px;
+    /*margin-top: 20px;*/
+    margin-bottom: 100px; 
     
 
 }
 
 
 .image{
-    width: 200px;
-    height: 140px;
+    width: 240px;
+    height: 180px;
     border-radius: 10px;
-    margin: 10px;
-    padding: 10px;
-    background-color: white;
+    /* margin: 10px; */
+    /* padding: 10px; */
+    /* background-color:transparent; */
     border: 1px solid black;
    
-};
+}
+
+.image:hover{
+    box-shadow: #000000 0px 0px 20px 0px;
+    cursor: pointer;
+    border-radius: 50px;
+}
+
+.name{
+    display: flex;
+    justify-content: center;
+    font-size: 15px; 
+
+}
+
+
+
+.continent{
+    display: flex;
+    justify-content: center;
+    font-size: 15px;
+
+
+}
+
+.id{
+    display: flex;
+    margin-left: 45px;
+}

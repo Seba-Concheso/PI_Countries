@@ -9,25 +9,25 @@ const activityRouter = Router();
 
 // *********************** Ruta para crear una actividad turistica   **************************************
 const validate = async (req, res, next) => {
-  const { name, difficulty, duration, season, description, country } = req.body;
-  if (!name || !difficulty || !duration || !season || !country || !description)
+  const { name, difficulty, duration, season, description } = req.body;
+  if (!name || !difficulty || !duration || !season  || !description)
     return res.status(405).json({ error: "Faltan campos para completar." });
 
   next();
 };
-// const validateId = async (req, res, next) => {
-//   // const { country } = req.body;
-//   console.log(req.body.country + " este es el pais validateId");
-//   let countryId = await Country.findAll({
-//     where: { name: { [Op.iLike]: `%${req.body.country}%` } },
-//   });
-//   console.log(countryId + " este es el countryID pais validateId");
-//   if (countryId.length === 0)
-//     return res.status(404).json({ error: "El país buscado no existe." });
-//   next();
-// };
+const validateId = async (req, res, next) => {
+  // const { country } = req.body;
+  console.log(req.body.country + " este es el pais validateId");
+  let countryId = await Country.findAll({
+    where: { name: { [Op.iLike]: `%${req.body.country}%` } },
+  });
+  console.log(countryId + " este es el countryID pais validateId");
+  if (countryId.length === 0)
+    return res.status(404).json({ error: "El país buscado no existe." });
+  next();
+};
 
-activityRouter.post("/activities", validate, async (req, res) => {
+activityRouter.post("/activities", validate, validateId, async (req, res) => {
   try {
     const { name, difficulty, duration, season, country, description } =
       req.body;
@@ -59,6 +59,7 @@ activityRouter.post("/activities", validate, async (req, res) => {
     await newActivity.addCountry(countryid);
     return res.status(201).json(newActivity);
   } catch (error) {
+    window.alert("El país buscado no existe.");
     return res.status(404).json({ error: error.message });
   }
 });

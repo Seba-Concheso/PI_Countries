@@ -1,9 +1,106 @@
 .country{
     display: flex;
-    margin: 50px;
+    flex-direction: 4 column;
+    margin-left: 210px;
+    margin-top: 40px;
     padding: 2em;
-    justify-content: space-around;
-    align-items: center;
+    justify-content:space-between;
+    /* align-items: center; */
     flex-wrap: wrap;
+    
+    /* background-color: transparent; */
+    
+}
+
+.filtrados{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 100%;
+    position: fixed;
+    /* justify-content: space-around; */
+    align-items: left;
+    margin-top: 57px;
+    background-color: #ffffff;
+    /* border: #303841 2px solid; */
+}
+
+.divfiltrados{
+    display: flex;
+    flex-direction: column;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 85px;;
+    margin-right: 15px; 
+
+}
+
+.actividades{
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-around; */
+    /* align-items:flex-end; */
+    padding: 3px;
+    margin-left: 16px;
+    margin-top: 20px;
+    
+
+}
+.buttonActivity{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #363f4b;
+    color: #fff;
+    border: 1px solid #5a6674;
+    border-radius: 6px 6px 6px 6px;
+    cursor: pointer;
+    font-size: 16px;
+    height: 32px;
+    width: 150px;
+    margin-left: 0px;
+    margin-bottom: 30px;
+}
+.buttonActivity:hover{
+    color: #be3144;
+    
+}
+
+.home{
+    /* background-image: url('../../assets/Landing_Page.jpg'); */
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+
+
+}
+
+
+
+.select{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    font-size: 17px;
+    padding: 3px 10px;
+    cursor: pointer;
+    margin: 10px;
+    margin-right: 20px;
+    margin-left: 20px;
+    border-radius: 5px;
+    border: 1px solid #363f4b;
+    background-color: #363f4b;
+    
+}
+
+.select:hover{
+    color: #be3144;
+    border: 1px solid #be3144;
     
 }
