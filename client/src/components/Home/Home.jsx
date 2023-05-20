@@ -85,8 +85,6 @@ const Home = () => {
         </NavLink>
         </div> 
       </div>
-      <div className={Style.pagination}>
-      </div>
       <div className={Style.country}>
         {filteredCountries
           .slice((currentPage - 1) * 10, currentPage * 10)
@@ -104,7 +102,9 @@ const Home = () => {
               );
             })}
       </div >
+      
             <Pagination ></Pagination>
+      
       
     </div>
   );

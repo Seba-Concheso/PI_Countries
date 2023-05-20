@@ -1,4 +1,17 @@
-.form{    
+.form{
+    background-image: url("../../assets/vacation-icons-vector.jpg");
+    background-size:58%;
+    /* margin-top:300px; */
+    /* background-repeat: no-repeat; */
+   
+
+}
+
+
+
+
+
+.divform{    
     border: #2b2b2b 2px solid;
     margin-top:110px;
     width: 650px;

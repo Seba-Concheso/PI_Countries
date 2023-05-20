@@ -82,6 +82,7 @@ const Form = () => {
 
   return (
     <form onSubmit={handleSubmit} className={Style.form}>
+      <div className={Style.divform}>
       {/* <input type="text" onChange={(()=> handleChangeCountry, handleChange)}/> */}
       
       <select
@@ -193,7 +194,7 @@ const Form = () => {
           <button className={Style.button}>Cancelar</button>
         </Link>
       </div>
-      
+      </div>
     </form>
   );
 };

@@ -8,6 +8,7 @@ import Activities from "./components/Activities/Activities";
 import About from "./components/About/About";
 import { useLocation } from "react-router-dom";
 import NavBar from "./components/NavBar/NavBar";
+import NotFound from "./components/NotFound/NotFound";
 
 const App = () => {
   const location = useLocation();
@@ -24,7 +25,7 @@ const App = () => {
         <Route path="/countries/:id" element={<Detail />}/>
         <Route path="/activities" element={<Activities />} />
         <Route path="/about" element={<About />} />
-        <Route path="*" element={<h1>404</h1>} />
+        <Route path="*" element={<NotFound/>} />
       </Routes>
     </div>
   );
