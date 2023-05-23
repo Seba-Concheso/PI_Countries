@@ -4,7 +4,7 @@ import Style from "./Pagination.module.css";
 
 const Pagination = () => {
   const dispatch = useDispatch();
-  const { country, currentPage, countryFiltered } = useSelector((state) => state);
+  const { country, currentPage, countryFiltered, countrySearch } = useSelector((state) => state);
   
 
   let filteredCountries = country;
@@ -12,6 +12,10 @@ const Pagination = () => {
   if (countryFiltered.length > 0) {
     filteredCountries = countryFiltered;
   }
+  if(countrySearch.length > 0){
+    filteredCountries = countrySearch;
+  }
+  
 
 
   return (

@@ -23,8 +23,9 @@ activityRouter.post("/activities", validate, async (req, res) => {
     req.body;
     console.log(country + " estos serian los paises");
     //debo recordar que country es un array de paises y asociarlo a cada id de pais
+    const countryids = [];
     for (const countryName of country) {
-      const countryid = await Country.findall({
+      const countrydata = await Country.findOne({
         attibute: ["id"],
         through: {
           attributes: [],
@@ -35,9 +36,12 @@ activityRouter.post("/activities", validate, async (req, res) => {
           },
         },
       });
-      console.log(countryid + " estos serian los id de los paises");
+      console.log(countryids + " estos serian los id de los paises");
+      if(!countrydata) return res.status(404).json({ error: "El país buscado no existe." });
+      countryids.push(countrydata.id);
     }
-    if(countryid.length === 0) return res.status(404).json({ error: "El país buscado no existe." });
+    console.log(countryids + " estos serian los id de los paises");
+
     const newActivity = await createActivity({
       name,
       difficulty,
@@ -47,7 +51,7 @@ activityRouter.post("/activities", validate, async (req, res) => {
     });
     
   
-    await newActivity.addCountry(countryid);
+    await newActivity.addCountry(countryids);
     return res.status(201).json(newActivity);
   } catch (error) {
     // window.alert("El país buscado no existe.");

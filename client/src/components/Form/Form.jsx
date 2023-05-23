@@ -6,7 +6,6 @@ import validate from "./validate";
 import {
   createActivity,
   orderByName,
-  searchCountry,
 } from "../../redux/actions";
 import { Link } from "react-router-dom";
 import Style from "./Form.module.css";
@@ -15,8 +14,7 @@ const Form = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const country = useSelector((state) => state.country);
-  // console.log(country);
-  const [error, setError] = useState({});
+  
   const [form, setForm] = useState({
     name: "",
     difficulty: 0,
@@ -25,20 +23,29 @@ const Form = () => {
     description: "",
     country: [],
   });
+  const [error, setError] = useState({});
+  const [formCompleted, setFormCompleted] = useState(false);
+
+  
 
   useEffect(() => {
     dispatch(orderByName("ASC"));
-  }, [dispatch]);
+    checkForm();
+  }, [dispatch,form]);
 
   const handleChangeCountry = (event) => {
-    const selectedCountries = Array.from(
-      event.target.selectedOptions,
-      (option) => option.value
+    setForm({ ...form, country: [...form.country, event.target.value] });
+    setError(
+      validate({
+        ...form,
+        country: [...form.country, event.target.value],
+      })
     );
-    setForm({ ...form, country: selectedCountries });
+    console.log(form.country +  "  form.country");
   };
-  console.log(form.country + "  Seria el formulario con los paises");
+
   const handleChange = (event) => {
+    
     setForm({ ...form, [event.target.name]: event.target.value });
     setError(
       validate({
@@ -47,45 +54,39 @@ const Form = () => {
       })
     );
   };
-  const [formCompleted, setFormCompleted] = useState(false);
-  const formCompletedHandler = () => {
-    if (
-      form.name !== "" &&
-      form.difficulty !== 0 &&
-      form.duration !== 0 &&
-      form.season !== "" &&
-      form.description !== "" &&
-      form.country !== ""
-    ) {
-      setFormCompleted(true);
-    }
-    return formCompleted;
+
+  const checkForm = () => {
+    const { name, difficulty, duration, season, description, country } = form;
+    const isNameValid = name !== "";
+    const isDifficultyValid = difficulty !== 0;
+    const isDurationValid = duration !== 0;
+    const isSeasonValid = season !== "";
+    const isDescriptionValid = description !== "";
+    const isCountryValid = country.length !== 0;
+  
+    setFormCompleted(
+      isNameValid &&
+      isDifficultyValid &&
+      isDurationValid &&
+      isSeasonValid &&
+      isDescriptionValid &&
+      isCountryValid
+    );
   };
+  
+ 
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(createActivity(form));
-    dispatch(orderByName());
+    // dispatch(orderByName());
     navigate("/home");
   };
+  
 
   return (
     <form onSubmit={handleSubmit} className={Style.form}>
       <div className={Style.divform}>
-        <select
-          className={Style.select}
-          value={form.country}
-          onChange={handleChangeCountry}
-        >
-          <option value=" ">Seleccione un país</option>
-          {country.map((c) => (
-            <option key={c.id} value={c.name}>
-              {c.name}
-            </option>
-          ))}
-        </select>
-
-        {error.country && <p className={Style.error}>{error.country}</p>}
-
+        
         <label htmlFor="name" className={Style.label}>
           {" "}
           Nombre{" "}
@@ -149,6 +150,23 @@ const Form = () => {
         </select>
         {error.season && <p className={Style.error}>{error.season}</p>}
 
+        <label htmlFor="country" className={Style.label}>País/es</label>
+        <select
+          className={Style.select}
+          value={form.country}
+          onChange={handleChangeCountry}
+        >
+          <option value=" ">Seleccione un país</option>
+          {country.map((c) => (
+            <option key={c.id} value={c.name}>
+              {c.name}
+            </option>
+          ))}
+        </select>
+
+        {error.country && <p className={Style.error}>{error.country}</p>}
+        
+
         <label htmlFor="description" className={Style.label}>
           {" "}
           Descripción{" "}
@@ -164,7 +182,7 @@ const Form = () => {
 
         <div className={Style.divbutton}>
           <button
-            disabled={!formCompletedHandler()}
+            disabled={!formCompleted}
             type="submit"
             className={Style.button}
           >
