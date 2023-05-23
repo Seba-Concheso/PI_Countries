@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Style from "./Country.module.css";
 
 const Country = (country, Activity) => {
+  
   return (
     <div className={Style.country}>
       {/* <h2 className={Style.id}>{country.id}</h2> */}

@@ -1,5 +1,5 @@
-const validate = (form, country) => {
-  console.log("Principio   " + country);
+const validate = (form, ) => {
+  console.log("Principio   " + form.country);
 
   const error = {};
   if (form.country ==="Seleccione un país") error.country = " Debe completar un país. ";

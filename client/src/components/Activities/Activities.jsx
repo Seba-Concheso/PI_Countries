@@ -22,8 +22,7 @@ const Activities = () => {
   };
 
   let filteredActivities = activities;
-  console.log(activitiesFiltered + "  actFiltered");
-  console.log("filteredActivities: " + filteredActivities);
+  
   if (activitiesFiltered.length > 0) {
     filteredActivities = activitiesFiltered;
   }

@@ -4,7 +4,15 @@ import Style from "./Pagination.module.css";
 
 const Pagination = () => {
   const dispatch = useDispatch();
-  const { country, currentPage } = useSelector((state) => state);
+  const { country, currentPage, countryFiltered } = useSelector((state) => state);
+  
+
+  let filteredCountries = country;
+
+  if (countryFiltered.length > 0) {
+    filteredCountries = countryFiltered;
+  }
+
 
   return (
     <div className={Style.div}>
@@ -17,10 +25,10 @@ const Pagination = () => {
       </button >
       </div>
       <p className={Style.pagina}>
-         { currentPage}/{Math.ceil(country.length / 10)}
+         { currentPage}/{Math.ceil(filteredCountries.length / 10)}
       </p>
       <button className={Style.buttonDer}
-        disabled={currentPage === Math.ceil(country.length / 10)}
+        disabled={currentPage === Math.ceil(filteredCountries.length / 10)}
         onClick={() => dispatch(nextPage())}
       >
         

@@ -29,7 +29,7 @@ const Detail = () => {
         <h3 className={Style.info}>Capital: {countryDetail.capital}</h3>
         <h4 className={Style.info}>Continente: {countryDetail.continent}</h4>
         <h4 className={Style.info}>Subregión: {countryDetail.subregion}</h4>
-        <h4 className={Style.info}>Área: {countryDetail.area} m²</h4>
+        <h4 className={Style.info}>Área: {countryDetail.area} Km²</h4>
         <h4 className={Style.info}>Población: {countryDetail.population}</h4>
         </div>
         <div className={Style.activities}>

@@ -17,6 +17,7 @@ import {
 const initialState = {
   country: [],
   countryDetail: {},
+  countrySearch: [],
   countryFiltered: [],
   activitiesFiltered: [],
   currentPage: 1,
@@ -27,7 +28,11 @@ const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case GET_COUNTRIES_BY_API:
       return {
-        ...state,
+        // ...state,
+        countryFiltered: [],
+        countryDetail: {},
+        activitiesFiltered: [],
+        countrySearch: [],
         country: payload,
         currentPage: 1,
       };
@@ -55,7 +60,7 @@ const reducer = (state = initialState, { type, payload }) => {
     case CREATE_ACTIVITIES:
       return {
         ...state,
-        // activities: payload,  //está así porque sino me da error el maps de activities
+        // activities: payload,  //está así porque sino me da esrror el maps de activities
       };
     case GET_ACTIVITIES:
       return {
@@ -65,7 +70,9 @@ const reducer = (state = initialState, { type, payload }) => {
     case SEARCH_COUNTRY:
       return {
         ...state,
-        country: payload,
+        countrySearch: payload,
+        // country: payload,
+        currentPage: 1,
       };
     case FILTER_CONTINENT:
       const countryFiltered = state.country.filter(

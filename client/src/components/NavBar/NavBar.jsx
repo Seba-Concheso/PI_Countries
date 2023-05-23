@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import Style from "./NavBar.module.css";
 import SearchBar from "../SearchBar/SearchBar";
-import { getCountriesFront, searchCountry } from "../../redux/actions";
+import { getCountriesFront } from "../../redux/actions";
 
 const NavBar = () => {
   const navigate = useNavigate();
@@ -15,12 +15,13 @@ const NavBar = () => {
     <nav>
       <div className={Style.navbar}>
         <Link to="/home">
-          <button className={Style.home} onClick={handleClick}>Home</button>
-          
+          <button className={Style.home} onClick={handleClick}>
+            Home
+          </button>
         </Link>
         <Link to="/about">
-          <button className={Style.about} >About</button>
-          </Link>
+          <button className={Style.about}>About</button>
+        </Link>
         <SearchBar className={Style.searchBar} onSearch={SearchBar} />
       </div>
     </nav>

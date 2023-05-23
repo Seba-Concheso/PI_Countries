@@ -1,6 +1,8 @@
 const { Country } = require("../db");
 const axios = require("axios");
 
+
+
 const getCountriesByApi = async () => {
   let countries = await Country.findAll();
   if(countries.length > 0) return countries;

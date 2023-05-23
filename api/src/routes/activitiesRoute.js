@@ -15,51 +15,42 @@ const validate = async (req, res, next) => {
 
   next();
 };
-const validateId = async (req, res, next) => {
-  // const { country } = req.body;
-  console.log(req.body.country + " este es el pais validateId");
-  let countryId = await Country.findAll({
-    where: { name: { [Op.iLike]: `%${req.body.country}%` } },
-  });
-  console.log(countryId + " este es el countryID pais validateId");
-  if (countryId.length === 0)
-    return res.status(404).json({ error: "El país buscado no existe." });
-  next();
-};
 
-activityRouter.post("/activities", validate, validateId, async (req, res) => {
+
+activityRouter.post("/activities", validate, async (req, res) => {
   try {
     const { name, difficulty, duration, season, country, description } =
-      req.body;
-    let countryResult = await Country.findAll({
-      attributes: ["id"],
-      through: {
-        attributes: [],
-      },
-      where: {
-        name: {
-          [Op.iLike]: `%${country}%`,
+    req.body;
+    console.log(country + " estos serian los paises");
+    //debo recordar que country es un array de paises y asociarlo a cada id de pais
+    for (const countryName of country) {
+      const countryid = await Country.findall({
+        attibute: ["id"],
+        through: {
+          attributes: [],
         },
-      },
-    });
-    console.log(countryResult + " este es el countryID pais");
-    if (countryResult.length === 0)
-      return res.status(404).json({ error: "El país buscado no existe." });
-    let countryid = countryResult[0].id;
-
+        where: {
+          name: {
+            [Op.iLike]: `%${countryName}%`,
+          },
+        },
+      });
+      console.log(countryid + " estos serian los id de los paises");
+    }
+    if(countryid.length === 0) return res.status(404).json({ error: "El país buscado no existe." });
     const newActivity = await createActivity({
       name,
       difficulty,
       duration,
       season,
       description,
-      country: countryid,
     });
-
+    
+  
     await newActivity.addCountry(countryid);
     return res.status(201).json(newActivity);
   } catch (error) {
-    window.alert("El país buscado no existe.");
+    // window.alert("El país buscado no existe.");
     return res.status(404).json({ error: error.message });
   }
 });
