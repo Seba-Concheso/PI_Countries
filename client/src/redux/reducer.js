@@ -29,6 +29,7 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         countryFiltered: [],
         countrySearch: [],
+        countryDetail: {},
         activitiesFiltered: [],
         activities: [],
         country: payload,

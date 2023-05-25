@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getDetail } from "../../redux/actions";
+import {  getDetail } from "../../redux/actions";
 import { Link } from "react-router-dom";
 import Style from "./Detail.module.css";
 
@@ -10,8 +10,9 @@ const Detail = () => {
 
   const dispatch = useDispatch();
   const countryDetail = useSelector((state) => state.countryDetail);
-
+  
   useEffect(() => {
+    
     dispatch(getDetail(id));
   }, [id]);
 

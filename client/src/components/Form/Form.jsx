@@ -60,7 +60,7 @@ const Form = () => {
     const { name, difficulty, duration, season, description, country } = form;
     const isNameValid = name !== "";
     const isDifficultyValid = difficulty !== 0;
-    const isDurationValid = duration !== 0;
+    const isDurationValid = duration > 0;
     const isSeasonValid = season !== "";
     const isDescriptionValid = description !== "";
     const isCountryValid = country.length !== 0;
