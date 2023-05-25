@@ -52,7 +52,7 @@ const Detail = () => {
             <h4 className={Style.mapa}>Mapa</h4>
           </Link>
         </div>
-        <Link to="/countries">
+        <Link to="/home">
           <button className={Style.button}>Volver</button>
         </Link>
       </div>

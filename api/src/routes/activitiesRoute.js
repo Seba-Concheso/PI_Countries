@@ -21,7 +21,7 @@ activityRouter.post("/activities", validate, async (req, res) => {
   try {
     const { name, difficulty, duration, season, country, description } =
     req.body;
-    console.log(country + " estos serian los paises");
+    
     //debo recordar que country es un array de paises y asociarlo a cada id de pais
     const countryids = [];
     for (const countryName of country) {
@@ -36,11 +36,11 @@ activityRouter.post("/activities", validate, async (req, res) => {
           },
         },
       });
-      console.log(countryids + " estos serian los id de los paises");
+      
       if(!countrydata) return res.status(404).json({ error: "El país buscado no existe." });
       countryids.push(countrydata.id);
     }
-    console.log(countryids + " estos serian los id de los paises");
+    
 
     const newActivity = await createActivity({
       name,

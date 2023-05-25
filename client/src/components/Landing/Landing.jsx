@@ -25,7 +25,7 @@ const Landing = ()=>{
         <div className={Style.div}>
             <h1 className={Style.h1} >Bienvenidos</h1>
             <button onClick={handleClick} className={Style.button} >
-            <NavLink to= "/countries">INGRESAR</NavLink>
+            <NavLink to= "/home">INGRESAR</NavLink>
             </button>
         </div>
     )

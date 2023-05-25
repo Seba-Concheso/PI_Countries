@@ -7,14 +7,14 @@ const NavBar = () => {
   const navigate = useNavigate();
   const handleClick = () => {
     getCountriesFront();
-    navigate("/countries", { replace: true });
+    navigate("/home", { replace: true });
     window.location.reload();
   };
 
   return (
     <nav>
       <div className={Style.navbar}>
-        <Link to="/countries">
+        <Link to="/home">
           <button className={Style.home} onClick={handleClick}>
             Home
           </button>

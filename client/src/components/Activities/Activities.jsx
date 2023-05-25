@@ -61,7 +61,7 @@ const Activities = () => {
       </div>
 
       <div>
-        <Link to="/countries">
+        <Link to="/home">
           <button className={Style.button}>Volver</button>
         </Link>
       </div>

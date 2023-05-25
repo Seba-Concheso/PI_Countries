@@ -6,7 +6,7 @@ const NotFound = () => {
         <div className={Style.conteiner}>
         <h1>404</h1>
         <h2>Upps!!, Aquí no hay nada.</h2>
-        <Link to="/countries">
+        <Link to="/home">
             <button className={Style.button}>Volver</button>
         </Link>
         </div>

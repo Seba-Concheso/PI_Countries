@@ -13,8 +13,8 @@ const SearchBar = () => {
   };
   const handleSubmit = (event) => {
     dispatch(searchCountry(countrysearch));
-    navigate(`/countries`, { replace: true });
-    navigate(`/countries/${countrysearch}`, { replace: true });
+    navigate(`/home`, { replace: true });
+    navigate(`/home/${countrysearch}`, { replace: true });
     
   };
 

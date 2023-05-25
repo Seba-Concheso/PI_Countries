@@ -31,9 +31,10 @@ const Form = () => {
   useEffect(() => {
     dispatch(orderByName("ASC"));
     checkForm();
-  }, [dispatch]);
+  }, [dispatch, form]);
 
   const handleChangeCountry = (event) => {
+    if (!form.country.includes(event.target.value))
     setForm({ ...form, country: [...form.country, event.target.value] });
     setError(
       validate({
@@ -41,7 +42,7 @@ const Form = () => {
         country: [...form.country, event.target.value],
       })
     );
-    console.log(form.country +  "  form.country");
+    
   };
 
   const handleChange = (event) => {
@@ -72,6 +73,7 @@ const Form = () => {
       isDescriptionValid &&
       isCountryValid
     );
+
   };
   
  
@@ -79,7 +81,7 @@ const Form = () => {
     event.preventDefault();
     dispatch(createActivity(form));
     window.alert("Actividad creada con éxito");
-    navigate("/countries");
+    navigate("/home");
   };
   
 
@@ -188,7 +190,7 @@ const Form = () => {
           >
             Enviar
           </button>
-          <Link to="/countries">
+          <Link to="/home">
             <button className={Style.button}>Cancelar</button>
           </Link>
         </div>
