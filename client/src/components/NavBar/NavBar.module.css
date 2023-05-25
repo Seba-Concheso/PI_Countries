@@ -58,3 +58,15 @@
     
 }
 
+
+.span{
+    font-size: 22px;
+    /* font-weight: bold; */
+    color: #fcfcfc;
+    background-image: url("../../assets/logo-white.png");
+    background-repeat: no-repeat;
+    background-size: 100px;
+    background-position: left;
+    padding-left: 120px;
+
+}

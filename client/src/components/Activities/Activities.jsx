@@ -30,7 +30,7 @@ const Activities = () => {
   return (
     <div>
       <h1>Actividades</h1>
-      <div>
+      <div className={Style.searchActivity}>
         <label htmlFor="filter">filtrar por actividad:</label>
         <input
           type="text"
@@ -38,7 +38,7 @@ const Activities = () => {
           value={filter}
           onChange={handleFilter}
         />
-        <button onClick={handleClick}>Filtrar/todos</button>
+        <button className={Style.buttonSearch} onClick={handleClick}>Filtrar/todos</button>
       </div>
       <div className={Style.conteiner}>
         {filteredActivities?.map((act, index) => {
@@ -61,8 +61,8 @@ const Activities = () => {
       </div>
 
       <div>
-        <Link to="/home">
-          <button>Volver</button>
+        <Link to="/countries">
+          <button className={Style.button}>Volver</button>
         </Link>
       </div>
     </div>

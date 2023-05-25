@@ -9,7 +9,6 @@ import {
   FILTER_CONTINENT,
   ORDER_BY_POPULATION,
   ORDER_BY_NAME,
-  FILTER_BY_ACTIVITY,
   GET_ACTIVITIES_BY_NAME,
   GET_COUNTRIES_BY_API,
 } from "./action.types";
@@ -28,10 +27,7 @@ const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case GET_COUNTRIES_BY_API:
       return {
-        // ...state,
         countryFiltered: [],
-        countryDetail: {},
-        activitiesFiltered: [],
         countrySearch: [],
         country: payload,
         currentPage: 1,
@@ -60,7 +56,6 @@ const reducer = (state = initialState, { type, payload }) => {
     case CREATE_ACTIVITIES:
       return {
         ...state,
-        // activities: payload,  //está así porque sino me da esrror el maps de activities
       };
     case GET_ACTIVITIES:
       return {
@@ -71,10 +66,17 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         countrySearch: payload,
-        // country: payload,
         currentPage: 1,
       };
     case FILTER_CONTINENT:
+      const allCountries = state.country;
+      if (payload === "All") {
+        return {
+          ...state,
+          countryFiltered: allCountries,
+          currentPage: 1,
+        };
+      }
       const countryFiltered = state.country.filter(
         (continent) => continent.continent === payload
       );
@@ -85,6 +87,10 @@ const reducer = (state = initialState, { type, payload }) => {
         currentPage: 1,
       };
     case ORDER_BY_POPULATION:
+      const sortedCountryFiltered =
+        payload === "ASC"
+          ? state.countryFiltered.sort((a, b) => a.population - b.population)
+          : state.countryFiltered.sort((a, b) => b.population - a.population);
       const sortedCountry =
         payload === "ASC"
           ? state.country.sort((a, b) => a.population - b.population)
@@ -92,16 +98,23 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         country: sortedCountry,
+        countryFiltered: sortedCountryFiltered,
         currentPage: 1,
       };
+
     case ORDER_BY_NAME:
-      const sortedCountryName =
+      const orderCountryName =
         payload === "ASC"
           ? state.country.sort((a, b) => a.name.localeCompare(b.name))
           : state.country.sort((a, b) => b.name.localeCompare(a.name));
+      const orderCountryFiltered =
+        payload === "ASC"
+          ? state.countryFiltered.sort((a, b) => a.name.localeCompare(b.name))
+          : state.countryFiltered.sort((a, b) => b.name.localeCompare(a.name));
       return {
         ...state,
-        country: sortedCountryName,
+        countryFiltered: orderCountryFiltered,
+        country: orderCountryName,
         currentPage: 1,
       };
     case GET_ACTIVITIES_BY_NAME:

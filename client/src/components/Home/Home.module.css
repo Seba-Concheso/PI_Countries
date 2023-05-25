@@ -30,6 +30,7 @@
 .divfiltrados{
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     font-size: 15px;
     font-weight: bold;
     margin-top: 85px;;
@@ -74,6 +75,7 @@
     
     /* width: 1800px; */
     flex-direction:  column;
+    /* flex-wrap: wrap; */
     /* background-size: cover; */
     /* background-position: center; */
     /* background-repeat: no-repeat; */

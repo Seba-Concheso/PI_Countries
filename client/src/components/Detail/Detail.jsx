@@ -18,19 +18,18 @@ const Detail = () => {
   return (
     <div className={Style.body}>
       <div className={Style.conteiner}>
-     
         <h1 className={Style.name}>{countryDetail.name}</h1>
         <img
           className={Style.flag}
           src={countryDetail.flag}
           alt={countryDetail.name}
         />
-        <div className={Style.divInfo} >
-        <h3 className={Style.info}>Capital: {countryDetail.capital}</h3>
-        <h4 className={Style.info}>Continente: {countryDetail.continent}</h4>
-        <h4 className={Style.info}>Subregión: {countryDetail.subregion}</h4>
-        <h4 className={Style.info}>Área: {countryDetail.area} Km²</h4>
-        <h4 className={Style.info}>Población: {countryDetail.population}</h4>
+        <div className={Style.divInfo}>
+          <h3 className={Style.info}>Capital: {countryDetail.capital}</h3>
+          <h4 className={Style.info}>Continente: {countryDetail.continent}</h4>
+          <h4 className={Style.info}>Subregión: {countryDetail.subregion}</h4>
+          <h4 className={Style.info}>Área: {countryDetail.area} Km²</h4>
+          <h4 className={Style.info}>Población: {countryDetail.population}</h4>
         </div>
         <div className={Style.activities}>
           <h4 className={Style.activitiestitle}>
@@ -53,9 +52,9 @@ const Detail = () => {
             <h4 className={Style.mapa}>Mapa</h4>
           </Link>
         </div>
-      <Link to="/home">
-        <button className={Style.button}>Volver</button>
-      </Link>
+        <Link to="/countries">
+          <button className={Style.button}>Volver</button>
+        </Link>
       </div>
     </div>
   );

@@ -7,14 +7,14 @@ const NavBar = () => {
   const navigate = useNavigate();
   const handleClick = () => {
     getCountriesFront();
-    navigate("/home", { replace: true });
+    navigate("/countries", { replace: true });
     window.location.reload();
   };
 
   return (
     <nav>
       <div className={Style.navbar}>
-        <Link to="/home">
+        <Link to="/countries">
           <button className={Style.home} onClick={handleClick}>
             Home
           </button>
@@ -23,6 +23,8 @@ const NavBar = () => {
           <button className={Style.about}>About</button>
         </Link>
         <SearchBar className={Style.searchBar} onSearch={SearchBar} />
+        <span className={Style.span}>Countries</span>
+        
       </div>
     </nav>
   );

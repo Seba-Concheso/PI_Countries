@@ -31,7 +31,7 @@ const Form = () => {
   useEffect(() => {
     dispatch(orderByName("ASC"));
     checkForm();
-  }, [dispatch,form]);
+  }, [dispatch]);
 
   const handleChangeCountry = (event) => {
     setForm({ ...form, country: [...form.country, event.target.value] });
@@ -78,8 +78,8 @@ const Form = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(createActivity(form));
-    // dispatch(orderByName());
-    navigate("/home");
+    window.alert("Actividad creada con éxito");
+    navigate("/countries");
   };
   
 
@@ -188,7 +188,7 @@ const Form = () => {
           >
             Enviar
           </button>
-          <Link to="/home">
+          <Link to="/countries">
             <button className={Style.button}>Cancelar</button>
           </Link>
         </div>
