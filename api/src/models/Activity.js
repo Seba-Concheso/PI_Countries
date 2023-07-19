@@ -9,14 +9,14 @@ module.exports = (sequelize) => {
         defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
         allowNull: false,
-     },
-     name: {
-        type: DataTypes.STRING,
+      },
+      name: {
+         type: DataTypes.STRING,
         allowNull: false,
         
      },
      difficulty: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.ENUM( "1", "2","3", "4", "5"),
         allowNull: false,
         // validate: {  }
      },
