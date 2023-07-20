@@ -24,7 +24,7 @@ export const getCountriesByApi = () => {
 };
 export const getCountriesFront = () => {
   // const endpoint = "http://localhost:3001/countries";
-  
+
   return async function (dispatch) {
     const response = await axios.get("http://localhost:3001/countries");
 
@@ -71,9 +71,7 @@ export const getActivities = () => {
 export const filterActivitiesByName = (name) => {
   return async function (dispatch) {
     try {
-      const response = await axios(
-        `http://localhost:3001/activities?name=${name}`
-      );
+      const response = await axios(`http://localhost:3001/activities?name=${name}`);
 
       return dispatch({ type: GET_ACTIVITIES_BY_NAME, payload: response.data });
     } catch (error) {
@@ -86,9 +84,7 @@ export const searchCountry = (country) => {
   const name = country;
   return async function (dispatch) {
     try {
-      const response = await axios(
-        `http://localhost:3001/countries?name=${name}`
-      );
+      const response = await axios(`http://localhost:3001/countries?name=${name}`);
       return dispatch({ type: SEARCH_COUNTRY, payload: response.data });
     } catch (error) {
       window.alert("Pais no encontrado");
@@ -97,7 +93,6 @@ export const searchCountry = (country) => {
 };
 
 export const filterContinent = (continent) => {
-  
   return {
     type: FILTER_CONTINENT,
     payload: continent,
@@ -117,5 +112,3 @@ export const orderByName = (order) => {
     currentPage: 1,
   };
 };
-
-
