@@ -24,7 +24,6 @@ const NavBar = () => {
         </Link>
         <SearchBar className={Style.searchBar} onSearch={SearchBar} />
         <span className={Style.span}>Countries</span>
-        
       </div>
     </nav>
   );

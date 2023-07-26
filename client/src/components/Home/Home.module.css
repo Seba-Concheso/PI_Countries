@@ -20,7 +20,7 @@
     width: 200px;
     height: 100%;
     position: fixed;
-    /* justify-content: space-around; */
+    /* justify-content: center; */
     align-items: left;
     margin-top: 57px;
     background-color: #ffffff;
@@ -41,8 +41,7 @@
 .actividades{
     display: flex;
     flex-wrap: wrap;
-    /* justify-content: space-around; */
-    /* align-items:flex-end; */
+    justify-content: space-between;
     padding: 3px;
     margin-left: 16px;
     margin-top: 20px;
