@@ -25,6 +25,7 @@
     text-decoration: none;
     /* display: inline-block; */
     font-size: 16px;
+    mix-blend-mode: color-burn;
 }
 .buttonDer{
     background-image: url('../../assets/flecha-correcta-derecha.png');
@@ -40,7 +41,7 @@
     text-decoration: none;
     /* display: inline-block; */
     font-size: 16px;
-
+    mix-blend-mode: color-burn;
 }
 
 .buttonDer:hover{

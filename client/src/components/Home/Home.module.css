@@ -23,7 +23,9 @@
     /* justify-content: center; */
     align-items: left;
     margin-top: 57px;
-    background-color: #ffffff;
+    margin-left: 10px;
+    padding-left: 10px;
+    background-color:linear-gradient(90deg,#cdbbbb 0%, #c6bbd0 80%);
     /* border: #303841 2px solid; */
 }
 
@@ -35,6 +37,7 @@
     font-weight: bold;
     margin-top: 85px;;
     margin-right: 15px; 
+    border-radius: 12px;
 
 }
 

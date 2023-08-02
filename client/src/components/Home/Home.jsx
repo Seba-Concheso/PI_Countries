@@ -45,7 +45,7 @@ const Home = () => {
       <div className={Style.filtrados}>
         <div className={Style.divfiltrados}>
           <span> Filtrar por continente </span>
-          <select onChange={handleFilter}>
+          <select onChange={handleFilter} className={Style.select}>
             <option value="All">All</option>
             <option value="Africa">Africa</option>
             <option value="Americas">Americas</option>
@@ -57,7 +57,7 @@ const Home = () => {
         </div>
         <div className={Style.divfiltrados}>
           <span> Ordenar por población </span>
-          <select onChange={handleOrderByPopulation}>
+          <select onChange={handleOrderByPopulation} className={Style.select}>
             <option value="">Seleccionar</option>
             <option value="ASC">Ascendente</option>
             <option value="DESC">Descendente</option>
@@ -65,7 +65,7 @@ const Home = () => {
         </div>
         <div className={Style.divfiltrados}>
           <span> Ordenar por nombre </span>
-          <select onChange={handleOrderByName}>
+          <select onChange={handleOrderByName} className={Style.select}>
             <option value="">Seleccionar</option>
             <option value="ASC">Ascendente</option>
             <option value="DESC">Descendente</option>

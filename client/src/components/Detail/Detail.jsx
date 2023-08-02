@@ -17,7 +17,10 @@ const Detail = () => {
 
   return (
     <div className={Style.body}>
-      <div className={Style.conteiner}>
+      <div className={Style.container}>
+        <Link to="/home">
+          <button className={Style.button}>Volver</button>
+        </Link>
         <h1 className={Style.name}>{countryDetail.name}</h1>
         <img className={Style.flag} src={countryDetail.flag} alt={countryDetail.name} />
         <div className={Style.divInfo}>
@@ -48,9 +51,6 @@ const Detail = () => {
             <h4 className={Style.mapa}>Mapa</h4>
           </Link>
         </div>
-        <Link to="/home">
-          <button className={Style.button}>Volver</button>
-        </Link>
       </div>
     </div>
   );
